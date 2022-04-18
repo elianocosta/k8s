@@ -7,5 +7,88 @@ kubectl scale --replicas=6 -f replica
 explain:
 kubectl scale --replicas=6 replicaset myapp-replicaset
                             (type)      (name)
+kubect run nginx --image=nginx --dry-run=client --port=8080:8080 
+kubectl get all
+kubectl get pods -l env=dev
+exemplo 2:
+
+controlplane ~ ➜  kubectl describe pods  |grep finance
+Labels:       bu=finance
+Labels:       bu=finance
+Labels:       bu=finance
+Labels:       bu=finance
+Labels:       bu=finance
+Labels:       bu=finance
+
+kubect get replicaset -l env=prod
+kubectl get pods -l env=prod
+kubectl get deploy -l env=prod
+kubectl get svc -l env=prod --no-headers
+kubectl get pods -l env=prod,bu=finance,tier=frontend --no-headers | wc -l
+
+
+kubectl taint nodes node-name key=value:taint-eff
+kubectl taint nodes node1 app=blue:NoSchedule
+
+
+apiVersion:
+kind: Pod
+metadata:
+	name: myapp-pod
+spec:
+  containers:
+  - name: nginx-container
+    image: nginx
+  tolerations:
+  - key: app
+  operator: 
+  value:
+  effect:
+
+
+kubectl taint nodes node1 key1=value1:NoSchedule
+
+
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: bee
+  name: bee
+spec:
+  containers:
+  - image: nginx
+    name: bee
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+  tolerations:
+  - key: spray
+    value: mortein
+    effect: "NoSchedule"
+status: {}
+
+kubectl taint nodes controleplane taint=master:PreferNoSchedule
+
+DICA:
+kubectl explain pod --resursive | less
+	kubectl explain pod --recusive | grep -A5 tolerations
+
+
+kubectl label nodes <node-name> <label-key>=<label-value>
+
+affinity:
+  nodeAffinity:
+  requiredDuringSchedulingIgnoreDuringExecution:
+    nodeSelectorTerms:
+      - machExpressions:
+        - key: size
+          operator: In
+          values:
+            - Large
+
+
+	
 
                             
